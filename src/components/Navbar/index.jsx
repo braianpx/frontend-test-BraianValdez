@@ -8,10 +8,6 @@ const navigation = [
   { name: 'Tasks', href: '/tasks' },
 ];
 
-function classNames(...classes) {
-  return classes.filter(Boolean).join(' ');
-}
-
 const Navbar = () => {
   const location = useLocation();
   const [activeLink, setActiveLink] = useState(location.pathname);
@@ -22,13 +18,13 @@ const Navbar = () => {
         to={item.href}
         key={item.name}
         onClick={() => setActiveLink(item.href)} // Cambia el enlace activo al hacer clic
-        className={classNames(
-          activeLink === item.href
+        className={`
+          ${activeLink === item.href
             ? 'bg-primary text-white' 
-            : 'text-gray-300 hover:bg-gray-700 hover:text-white', 
-            isMovile && 'block',
-            'rounded-md px-3 py-2 text-sm font-medium'
-        )}
+            : 'text-gray-300 hover:bg-gray-700 hover:text-white'}
+            ${isMovile && 'block'}
+            rounded-md px-3 py-2 text-sm font-medium`
+        }
       >
         {item.name}
       </Link>
