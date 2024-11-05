@@ -2,19 +2,33 @@ import Button from '../Button/index';
 import PropTypes from 'prop-types';
 import CheckBox from '../Checkbox';
 import { updateCompleteTask, deleteTask } from '../../services/api';
+import { useTasks } from '../../context/TaskContext';
 
 const TaskCard = ({ id, title, description, complete }) => {
+  const { setTasks } = useTasks();
+
   const onDelete = async () => {
     await deleteTask(id);
-    alert('Se elimino correctamente la tarea')
-  }
+    // Elimina la tarea del contexto de tareas
+    setTasks((prevTasks) => prevTasks.filter(task => task.id !== id));
+    alert('Tarea eliminada correctamente');
+  };
+
   const onEdit = () => {
-    console.log('edit')
-  }
-  const onToggleComplete = async() => {
+    console.log('edit');
+  };
+
+  const onToggleComplete = async () => {
     await updateCompleteTask(id);
-    alert('Se actualizo el estado de la tarea')
-  }
+    // Actualiza el estado de 'complete' en el contexto
+    setTasks((prevTasks) =>
+      prevTasks.map(task =>
+        task.id === id ? { ...task, complete: !complete } : task
+      )
+    );
+    alert('Estado de la tarea actualizado correctamente');
+  };
+
   return (
     <div className="bg-white shadow-md rounded-lg p-4 max-w-sm w-full mx-auto flex flex-col">
       <div className="flex justify-between items-center border-b-2">

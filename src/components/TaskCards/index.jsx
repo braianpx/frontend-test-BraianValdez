@@ -14,7 +14,7 @@ const TaskCards = ({ tasks, loading, error }) => {
           id={task?.id}
           title={task?.title} 
           description={task?.description} 
-          completed={task?.completed} 
+          complete={task?.complete} 
         />
       ))}
     </div>
