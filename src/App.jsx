@@ -1,11 +1,13 @@
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
-function App() {
-
+const AppRoutes = () => {
   return (
-    <>
-    Task App
-    </>
-  )
-}
+    <Router>
+      <Routes>
+        <Route path="/" element={''} />
+      </Routes>
+    </Router>
+  );
+};
 
-export default App
+export default AppRoutes;
