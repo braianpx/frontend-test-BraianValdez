@@ -1,8 +1,7 @@
-import axios from "axios";
+import axios from 'axios'
 
-const BASE_URL = import.meta.env.VITE_BASE_URL;
+const BASE_URL = import.meta.env.VITE_BASE_URL
 
-console.log('base', BASE_URL)
 // Obtener todas las tareas
 export const getAllTask = async () => {
   try {
@@ -42,7 +41,8 @@ export const deleteTask = async (id) => {
     const response = await axios.delete(`${BASE_URL}/task/${id}`);
     return response.data
   } catch (error) {
-    console.error('Error deleting task:', error);
+    const message = error.response?.data?.message?.[0] || 'An error occurred'
+    alert(message);
     throw error
   }
 }
@@ -53,7 +53,8 @@ export const updateCompleteTask = async (id) => {
     const response = await axios.patch(`${BASE_URL}/task/${id}`);
     return response.data
   } catch (error) {
-    console.error('Error deleting task:', error);
+    const message = error.response?.data?.message?.[0] || 'An error occurred'
+    alert(message);
     throw error
   }
 }
