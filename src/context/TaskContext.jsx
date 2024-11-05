@@ -1,13 +1,14 @@
 import { createContext, useState, useEffect, useContext } from 'react';
+import PropTypes from 'prop-types';
 import { getAllTask } from '../services/api';
 
-const TaskContext = createContext();
+  const TaskContext = createContext();
 
-export const TaskProvider = ({ children }) => {
+  export  const TaskProvider = ({ children }) => {
   const [tasks, setTasks] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
-  const [ incompleteTask, setIncompleteTask] = useState([]);
+  const [error, setError] = useState('');
+  const [incompleteTask, setIncompleteTask] = useState([]);
 
   // Trae todas las tareas y maneja posibles errores
   const getTasks = async () => {
@@ -15,19 +16,20 @@ export const TaskProvider = ({ children }) => {
       setLoading(true);
       const response = await getAllTask();
       setTasks(response);
-      setIncompleteTask(response.filter(el => el.complete === false)); //filtro tareas incompletas
     } catch (err) {
-      // Captura el error y establece el mensaje de error en el estado
       setError(err.response?.data?.message?.[0] || 'An error occurred');
     } finally {
       setLoading(false);
     }
   };
-  
- 
+
+  useEffect(() => {
+    setIncompleteTask(tasks.filter((el) => el.complete === false));
+  }, [tasks]);
+
   useEffect(() => {
     getTasks();
-  }, [tasks]);
+  }, []);
 
   return (
     <TaskContext.Provider value={{ tasks, setTasks, incompleteTask, loading, error }}>
@@ -36,5 +38,10 @@ export const TaskProvider = ({ children }) => {
   );
 };
 
-export const useTasks = () => useContext(TaskContext);
+// Definición de PropTypes para validar las props
+TaskProvider.propTypes = {
+  children: PropTypes.node.isRequired, // Define el tipo de children
+};
 
+// Exporta el hook para acceder al contexto
+export const useTasks = () => useContext(TaskContext);
