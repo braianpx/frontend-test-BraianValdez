@@ -1,17 +1,18 @@
 import PropTypes from 'prop-types'; 
 
 const Buttons = {
-  Primary: '',
+  primary: 'bg-primary w-auto px-4 py-2 rounded-lg shadow-md hover:bg-black-semi text-white ',
   secondary: '',
   none:''
 } 
 
-const Button = ({ type, name, callback, style }) => {
+const Button = ({ classButton, name, callback, style, type }) => {
 
   return(
     <button 
+      type={type && type || 'button'}
       onClick={callback}
-      className={`${Buttons[type]} ${style} `}
+      className={`${Buttons[classButton]} ${style} `}
     >
       {name}
     </button>
@@ -19,9 +20,10 @@ const Button = ({ type, name, callback, style }) => {
 }
 
 Button.propTypes = {
+  type: PropTypes.string,
   name: PropTypes.string.isRequired,
-  callback: PropTypes.func.isRequired,
-  type: PropTypes.string.isRequired,
+  callback: PropTypes.func,
+  classButton: PropTypes.string,
   style: PropTypes.string.isRequired,
 }
 

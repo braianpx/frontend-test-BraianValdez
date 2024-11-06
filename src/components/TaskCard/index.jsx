@@ -1,11 +1,14 @@
 import Button from '../Button/index';
 import PropTypes from 'prop-types';
 import CheckBox from '../Checkbox';
-import { updateCompleteTask, deleteTask } from '../../services/api';
+import { updateCompleteTask, deleteTask, updateTask } from '../../services/api';
 import { useTasks } from '../../context/TaskContext';
+import { useState } from 'react';
+import TaskForm from '../TaskForm';
 
 const TaskCard = ({ id, title, description, complete }) => {
   const { setTasks } = useTasks();
+  const [ edit, setEdit ] = useState(false); //esta editando
 
   const onDelete = async () => {
     await deleteTask(id);
@@ -15,7 +18,7 @@ const TaskCard = ({ id, title, description, complete }) => {
   };
 
   const onEdit = () => {
-    console.log('edit');
+    setEdit(!edit)
   };
 
   const onToggleComplete = async () => {
@@ -47,13 +50,16 @@ const TaskCard = ({ id, title, description, complete }) => {
           callback={onEdit} 
           style='text-blue-500 hover:text-blue-700' 
           name='Edit' 
-          type='none'/>
+          type='button'/>
         <Button 
           callback={onDelete} 
           style='text-red-500 hover:text-red-700' 
           name='Delete' 
-          type='none'/>
+          type='button'/>
       </div>
+        {
+          edit && <TaskForm taskToEdit={{id,title,description,complete}} onSubmit={updateTask} cancelSubmit={onEdit}/>
+        }
     </article>
   );
 };
