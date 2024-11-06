@@ -62,7 +62,8 @@ Para iniciar el servidor de desarrollo y comenzar a trabajar en la aplicación f
 - **Crear tareas:** En la esquina inferior derecha encontrarás un botón con el cual podrás crear tareas.
 - **Editar y Borrar tareas:** Cada tarea tendrá un botón para borrarla o editarla si es necesario.
 - **Cambio de estado de las tareas:** En la parte superior derecha habrá un botón/checkbox para cambiar el estado de la tarea.
-  
+- **Filtros de busqueda por texto y estado de la tarea:** Estos filtros son combinables y puedes usarlos para buscar una tarea específica.
+
 ### Vistas y Rutas
 - **Home:** Aparecerán todas las tareas que estén incompletas.
 - **Task:** Aparecerán todas las tareas, independientemente de su estado.
