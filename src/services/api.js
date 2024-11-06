@@ -30,7 +30,8 @@ export const updateTask = async (id, updatedTask) => {
     const response = await axios.put(`${BASE_URL}/task/${id}`, updatedTask);
     return response.data
   } catch (error) {
-    console.error('Error updating task:', error);
+    const message = error.response?.data?.message?.[0] || 'An error occurred'
+    alert(message);
     throw error
   }
 }
