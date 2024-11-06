@@ -48,7 +48,7 @@ export const updateTask = async (id, updatedTask) => {
     const response = await axios.put(`${BASE_URL}/task/${id}`, updatedTask);
     return response.data
   } catch (error) {
-    const message = error.response?.data?.message?.[0] || 'An error occurred'
+    const message = error.response?.data?.message?.[0] || 'Network Error'
     alert(message);
     throw error
   }
@@ -60,7 +60,7 @@ export const deleteTask = async (id) => {
     const response = await axios.delete(`${BASE_URL}/task/${id}`);
     return response.data
   } catch (error) {
-    const message = error.response?.data?.message?.[0] || 'An error occurred'
+    const message = error.response?.data?.message?.[0] || 'Network Error'
     alert(message);
     throw error
   }
@@ -72,7 +72,7 @@ export const updateCompleteTask = async (id) => {
     const response = await axios.patch(`${BASE_URL}/task/${id}`);
     return response.data
   } catch (error) {
-    const message = error.response?.data?.message?.[0] || 'An error occurred'
+    const message = error.response?.data?.message?.[0] || 'Network Error'
     alert(message);
     throw error
   }
