@@ -14,11 +14,11 @@ const CreateTask = () => {
 
   return(
   <section>
-          <Button 
-        callback={switchCreate}
-        classButton={'secondary'} 
-        name={'Crear Nueva Tarea'}  
-        style={`${mobile ? 'px-4 py-4 text-xl bg-opacity-80' : ''} fixed bottom-4 right-4 bg-opacity-95`}
+        <Button 
+          callback={switchCreate}
+          classButton={'secondary'} 
+          name={'Crear Nueva Tarea'}  
+          style={`${mobile ? 'px-4 py-4 text-xl bg-opacity-80' : ''} fixed bottom-4 right-4 bg-opacity-95`}
       />
       {create && <TaskForm cancelSubmit={switchCreate} onSubmit={createTask} />}
   </section>

@@ -17,7 +17,7 @@ import useToggleState from '../hooks/useToggle';
       const response = await getAllTask();
       setTasks(response);
     } catch (err) {
-      setError(err.response?.data?.message?.[0] || 'An error occurred');
+      setError(err.response?.data?.message?.[0] || 'Network Error');
     } finally {
       setTimeout(() => {
         switchLoading();

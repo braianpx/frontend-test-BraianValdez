@@ -10,7 +10,7 @@ function translateErrors(errors) {
     "description must be a string": "La descripción debe ser una cadena de texto"
   };
 
-  const translatedErrors = errors.map(error => translations[error] || error);
+  const translatedErrors = errors?.map(error => translations[error] || error);
   return translatedErrors.join(', ');
 }
 // Obtener todas las tareas
@@ -30,12 +30,13 @@ export const createTask = async (task) => {
     const response = await axios.post(`${BASE_URL}/task`, task);
     return response.data
   } catch (error) {
+    console.log(error)
     const errorsMesage = error.response?.data?.message[0]? 
     error.response?.data?.message?.length > 1? 
     error.response?.data?.message : 
     error.response?.data?.message[0] : 
-    'An error occurred'
-    const message = translateErrors(errorsMesage);
+    'Network Error'
+    const message = errorsMesage !== 'Network Error'&& translateErrors(errorsMesage) || errorsMesage;
     alert(message);
     throw error
   }
