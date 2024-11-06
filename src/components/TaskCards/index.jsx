@@ -1,30 +1,22 @@
 import PropTypes from 'prop-types';
 import TaskCard from '../TaskCard/index'; 
 import Loading from '../Loading';
-import { useEffect, useState } from 'react';
-import SearchBar from '../SearchBar';
+import { useState } from 'react';
+import Filters from '../Filters';
 
 const TaskCards = ({ tasks, loading, error }) => {
-  const [ query, setQuery ] = useState('');
   const [ filterTask, setFilterTask ] = useState([]);
 
-  useEffect(()=>{
-    setFilterTask(tasks)
-  },[tasks]);
-
-  const searchTask = (value) => {
-    setQuery(value);
-    setFilterTask( tasks?.filter((item) =>
-      item.title.toLowerCase().includes(value.toLowerCase())
-    ))
-  }
+  const applyFilters = (value) => {
+    setFilterTask(value);
+  };
 
   if (loading) return <Loading />;
   if (error) return <p>{error}</p>;
 
   return (
-    <section className="flex flex-wrap justify-center gap-8 p-4">
-      <SearchBar query={query} onSearch={searchTask} />
+    <section className="flex flex-wrap justify-center gap-8 p-4 mb-14">
+      <Filters tasks={tasks} setFiltered={applyFilters}/>
       { filterTask[0] ?
         filterTask?.map((task) => (
           <TaskCard 
