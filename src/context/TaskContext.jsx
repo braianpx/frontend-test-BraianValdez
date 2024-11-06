@@ -17,7 +17,7 @@ import useToggleState from '../hooks/useToggle';
       const response = await getAllTask();
       setTasks(response);
     } catch (err) {
-      setError(err.response?.data?.message?.[0] || 'Network Error');
+      setError(err.response?.data?.message?.[0]? err.response?.data?.message?.[0] : 'Network Error');
     } finally {
       setTimeout(() => {
         switchLoading();
@@ -26,7 +26,7 @@ import useToggleState from '../hooks/useToggle';
   };
 
   useEffect(() => {
-    setIncompleteTask(tasks.filter((el) => el.complete === false));
+      setIncompleteTask(tasks?.filter((el) => el.complete === false));
   }, [tasks]);
 
   useEffect(() => {
