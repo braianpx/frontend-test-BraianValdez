@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 
 const Buttons = {
   primary: 'bg-primary w-auto px-4 py-2 rounded-lg shadow-md hover:bg-black-semi text-white',
-  secondary: 'bg-primary w-auto px-4 py-3 rounded-full shadow-md hover:bg-blue-800  text-white cursor-pointer text-lg',
+  secondary: 'bg-primary w-auto px-3 py-3 rounded-full shadow-md hover:bg-blue-800 text-white cursor-pointer text-lg',
   none:''
 } 
 
