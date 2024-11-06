@@ -7,7 +7,7 @@ const TaskCards = ({ tasks, loading, error }) => {
   if (error) return <p>{error}</p>;
 
   return (
-    <div className="flex flex-wrap justify-center gap-4 p-4">
+    <div className="flex flex-wrap justify-center gap-8 p-4">
       {tasks?.map((task) => (
         <TaskCard 
           key={task?.id} // Asegúrate de que cada tarea tenga un `id` único
