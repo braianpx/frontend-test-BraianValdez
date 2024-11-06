@@ -1,26 +1,26 @@
 import { createContext, useState, useEffect, useContext } from 'react';
 import PropTypes from 'prop-types';
 import { getAllTask } from '../services/api';
+import useToggleState from '../hooks/useToggle';
 
   const TaskContext = createContext();
 
   export  const TaskProvider = ({ children }) => {
   const [tasks, setTasks] = useState([]);
-  const [loading, setLoading] = useState(true);
+  const {toggle: loading, toggleSwitch: switchLoading} = useToggleState(true);
   const [error, setError] = useState('');
   const [incompleteTask, setIncompleteTask] = useState([]);
 
   // Trae todas las tareas y maneja posibles errores
   const getTasks = async () => {
     try {
-      setLoading(true);
       const response = await getAllTask();
       setTasks(response);
     } catch (err) {
       setError(err.response?.data?.message?.[0] || 'An error occurred');
     } finally {
       setTimeout(() => {
-        setLoading(false);
+        switchLoading();
       }, 1300)
     }
   };

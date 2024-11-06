@@ -3,22 +3,18 @@ import PropTypes from 'prop-types';
 import CheckBox from '../Checkbox';
 import { updateCompleteTask, deleteTask, updateTask } from '../../services/api';
 import { useTasks } from '../../context/TaskContext';
-import { useState } from 'react';
+import useToggleState from '../../hooks/useToggle';
 import TaskForm from '../TaskForm';
 
 const TaskCard = ({ id, title, description, complete }) => {
   const { setTasks } = useTasks();
-  const [ edit, setEdit ] = useState(false); //esta editando
+  const { toggle: edit , toggleSwitch: onEdit } = useToggleState(); // gestiona si el usuario esta editando
 
   const onDelete = async () => {
     await deleteTask(id);
     // Elimina la tarea del contexto de tareas
     setTasks((prevTasks) => prevTasks.filter(task => task.id !== id));
     alert('Tarea eliminada correctamente');
-  };
-
-  const onEdit = () => {
-    setEdit(!edit)
   };
 
   const onToggleComplete = async () => {

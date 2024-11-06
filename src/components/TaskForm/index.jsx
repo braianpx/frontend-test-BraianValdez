@@ -2,10 +2,11 @@ import PropTypes from 'prop-types';
 import { useState, useEffect } from 'react';
 import { useTasks } from '../../context/TaskContext';
 import Button from '../Button';
+import useToggleState from '../../hooks/useToggle';
 
 const TaskForm = ({ taskToEdit, onSubmit, cancelSubmit }) => {
   // Estado para el formulario
-  const [isEdit] = useState(taskToEdit?.id || false)
+  const { toggle:isEdit } = useToggleState(taskToEdit?.id || false);
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
   const [complete, setComplete] = useState(false);
