@@ -2,6 +2,17 @@ import axios from 'axios'
 
 const BASE_URL = import.meta.env.VITE_BASE_URL
 
+function translateErrors(errors) {
+  const translations = {
+    "title should not be empty": "El título no debe estar vacío",
+    "title must be a string": "El título debe ser una cadena de texto",
+    "description should not be empty": "La descripción no debe estar vacía",
+    "description must be a string": "La descripción debe ser una cadena de texto"
+  };
+
+  const translatedErrors = errors.map(error => translations[error] || error);
+  return translatedErrors.join(', ');
+}
 // Obtener todas las tareas
 export const getAllTask = async () => {
   try {
@@ -19,7 +30,13 @@ export const createTask = async (task) => {
     const response = await axios.post(`${BASE_URL}/task`, task);
     return response.data
   } catch (error) {
-    console.error('Error creating task:', error);
+    const errorsMesage = error.response?.data?.message[0]? 
+    error.response?.data?.message?.length > 1? 
+    error.response?.data?.message : 
+    error.response?.data?.message[0] : 
+    'An error occurred'
+    const message = translateErrors(errorsMesage);
+    alert(message);
     throw error
   }
 }

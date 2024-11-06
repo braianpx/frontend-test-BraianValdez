@@ -5,6 +5,7 @@ import Button from '../Button';
 
 const TaskForm = ({ taskToEdit, onSubmit, cancelSubmit }) => {
   // Estado para el formulario
+  const [isEdit] = useState(taskToEdit?.id || false)
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
   const [complete, setComplete] = useState(false);
@@ -23,10 +24,16 @@ const TaskForm = ({ taskToEdit, onSubmit, cancelSubmit }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     const taskData = { title, description, complete };
-    const response = taskToEdit.id && await onSubmit(taskToEdit.id, taskData) || await onSubmit(taskData) //modifica la peticion dependiendo si es para actualizar o crear
-    setTasks((prevTasks) => prevTasks.map(task => task.id == taskToEdit.id? response : task));
+ //modifica la peticion dependiendo si es para actualizar o crear
+    if(isEdit){
+      const response = await onSubmit(taskToEdit.id, taskData);
+      setTasks((prevTasks) => prevTasks.map(task => task.id == taskToEdit.id? response : task));
+    } else {
+      const response = await onSubmit(taskData);
+      setTasks((prevTasks) => [...prevTasks, response] )
+    }
     resetForm();
-    alert(taskToEdit.id? 'Se Actualizo la tarea' : 'Se creo la tarea');
+    alert(isEdit? 'Se Actualizo la tarea' : 'Se creo la tarea');
   };
 
   const resetForm = () => {
@@ -37,7 +44,7 @@ const TaskForm = ({ taskToEdit, onSubmit, cancelSubmit }) => {
   };
 
   return (
-    <div className="flex justify-center items-center w-full h-full fixed left-0 top-0 bg-black-semi bg-opacity-80">
+    <div className="flex justify-center items-center w-full h-full fixed left-0 top-0 bg-black-semi bg-opacity-80 z-10">
       <div className="max-w-lg mx-auto bg-white p-6 rounded-lg shadow-lg mt-10">
         <h2 className="text-2xl font-bold text-gray-900 mb-6 text-center">
           {taskToEdit ? 'Editar Tarea' : 'Crear Tarea'}
