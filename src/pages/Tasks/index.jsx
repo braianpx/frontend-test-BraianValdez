@@ -4,9 +4,9 @@ import { useTasks } from "../../context/TaskContext";
 const Tasks = () => {
   const { tasks, error, loading } = useTasks();
   return (
-    <section>
+    <main>
       <TaskCards tasks={tasks} error={error} loading={loading} />
-    </section>
+    </main>
   );
 };
 
