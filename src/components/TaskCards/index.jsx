@@ -1,9 +1,10 @@
 import PropTypes from 'prop-types';
 import TaskCard from '../TaskCard/index'; 
+import Loading from '../Loading';
 
 const TaskCards = ({ tasks, loading, error }) => {
 
-  if (loading) return <p>Loading tasks...</p>;
+  if (loading) return <Loading />;
   if (error) return <p>{error}</p>;
 
   return (

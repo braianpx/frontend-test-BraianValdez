@@ -19,7 +19,9 @@ import { getAllTask } from '../services/api';
     } catch (err) {
       setError(err.response?.data?.message?.[0] || 'An error occurred');
     } finally {
-      setLoading(false);
+      setTimeout(() => {
+        setLoading(false);
+      }, 1300)
     }
   };
 
