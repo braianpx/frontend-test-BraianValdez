@@ -42,7 +42,7 @@ Una vez dentro de la carpeta del proyecto, instala las dependencias ejecutando e
 Crea un archivo .env en la raíz del proyecto con las siguientes variables de entorno:
 
   ```plaintext
-  REACT_APP_API_URL=http://localhost:3000  # URL del backend
+  VITE_BASE_URL=http://localhost:3000  # URL del backend
   ```
 ##### Nota: Asegúrate de que la URL del backend esté correctamente configurada para poder comunicarte con el servidor.
 
