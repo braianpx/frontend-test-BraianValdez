@@ -5,7 +5,7 @@ const Tasks = () => {
   const { tasks, error, loading } = useTasks();
   return (
     <main>
-      <TaskCards tasks={tasks} error={error} loading={loading} />
+      <TaskCards tasks={tasks} error={error} loading={loading} onFilter/>
     </main>
   );
 };

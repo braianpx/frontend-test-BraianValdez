@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react';
 import SearchBar from '../SearchBar';
 import TaskFilter from '../TaskFilter';
 
-const Filters = ({ tasks, setFiltered }) => {
+const Filters = ({ tasks, setFiltered, onFilter }) => {
   const [query, setQuery] = useState('');
   const [filter, setFilter] = useState('all');
 
@@ -25,7 +25,6 @@ const Filters = ({ tasks, setFiltered }) => {
     } else if (filter === 'incomplete') {
       updatedTasks = updatedTasks.filter((task) => !task.complete);
     }
-
     setFiltered(updatedTasks);
   };
 
@@ -40,7 +39,7 @@ const Filters = ({ tasks, setFiltered }) => {
   return (
       <div className="flex sm:flex-row gap-4 w-full justify-center flex-col">
         <SearchBar query={query} onSearch={handleSearch} />
-        <TaskFilter onFilterChange={handleFilterChange} />
+        { onFilter && <TaskFilter onFilterChange={handleFilterChange} /> }
       </div>
   );
 };
@@ -48,6 +47,7 @@ const Filters = ({ tasks, setFiltered }) => {
 Filters.propTypes = {
   tasks: PropTypes.array.isRequired,
   setFiltered: PropTypes.func.isRequired,
+  onFilter: PropTypes.bool,
 };
 
 export default Filters;

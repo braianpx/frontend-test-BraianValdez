@@ -40,17 +40,17 @@ const TaskCard = ({ id, title, description, complete }) => {
         className={`inline-block px-3 py-1 text-sm font-semibold rounded-full ${
           complete ? 'bg-green-100 text-green-800' : 'bg-red-100 text-red-800'
         }`}>
-        {complete ? 'Complete' : 'Not Complete'}
+        {complete ? 'Completa' : 'Pendiente'}
       </span>
         <Button 
           callback={onEdit} 
           style='text-blue-500 hover:text-blue-700' 
-          name='Edit' 
+          name='Editar' 
           type='button'/>
         <Button 
           callback={onDelete} 
           style='text-red-500 hover:text-red-700' 
-          name='Delete' 
+          name='Eliminar' 
           type='button'/>
       </div>
         {

@@ -1,6 +1,7 @@
 # TechTest - Frontend
 
 Este proyecto es una plataforma de administración de tareas. Permite a los usuarios crear, editar, eliminar y marcar tareas como completadas, todo a través de una interfaz amigable. Este es el componente de cliente que interactúa con el backend para gestionar las tareas de manera eficiente.
+**Es Responsive**
 
 ### Tecnologías utilizadas:
 - **React**: Para construir una interfaz de usuario dinámica y reactiva.
@@ -16,6 +17,7 @@ Antes de comenzar, asegúrate de tener instalado **Node.js** y **npm** en tu má
 
 - **Navegador web**: Google Chrome o cualquier otro navegador moderno.
 - **Node.js**: Asegúrate de tener la última versión de [Node.js](https://nodejs.org/).
+- **Tener el backend del proyecto - TechTest**: Asegúrate de que el Backend del Proyecto esté en funcionamiento, es necesario tener el backend activo para poder consumir la API y utilizar las distintas funcionalidades de la aplicación. 
 
 ## Configuración inicial
 

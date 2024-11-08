@@ -6,10 +6,10 @@ import useToggleState from '../../hooks/useToggle';
 
 const TaskForm = ({ taskToEdit, onSubmit, cancelSubmit }) => {
   // Estado para el formulario
-  const { toggle:isEdit } = useToggleState(taskToEdit?.id || false);
+  const { toggle: isEdit } = useToggleState(taskToEdit?.id || false);
+  const { toggle: complete, toggleSwitch: setComplete} = useToggleState();
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
-  const [complete, setComplete] = useState(false);
 
   const { setTasks } = useTasks();
 
@@ -46,41 +46,44 @@ const TaskForm = ({ taskToEdit, onSubmit, cancelSubmit }) => {
 
   return (
     <div className="flex justify-center items-center w-full h-full fixed left-0 top-0 bg-black-semi bg-opacity-80 z-10">
-      <div className="max-w-lg mx-auto bg-white p-6 rounded-lg shadow-lg mt-10">
+      <div className="max-w-lg md:max-w-xl md:w-full md:px-10 mx-auto bg-white p-6 rounded-lg shadow-lg mt-10">
         <h2 className="text-2xl font-bold text-gray-900 mb-6 text-center">
           {taskToEdit ? 'Editar Tarea' : 'Crear Tarea'}
         </h2>
         <form onSubmit={handleSubmit}>
           <div className="mb-4">
-            <label htmlFor="title" className="block text-sm font-medium text-gray-700">
-              Title
+            <label htmlFor="title" className="block text-lg font-medium text-primary">
+              Titulo
             </label>
             <input
               type="text"
               id="title"
               value={title}
               onChange={(e) => setTitle(e.target.value)}
-              placeholder="Task Title"
+              placeholder="Titulo de la tarea"
               required
-              className="text-black-semi mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
+              className="text-black-semi text-base mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
             />
           </div>
 
           <div className="mb-4">
-            <label htmlFor="description" className="block text-sm font-medium text-gray-700">
-              Description
+            <label htmlFor="description" className="block text-lg font-medium text-primary">
+              Descripción
             </label>
             <textarea
               id="description"
               value={description}
               onChange={(e) => setDescription(e.target.value)}
-              placeholder="Task Description"
+              placeholder="Descripción de la tarea."
               required
-              className="text-black-semi mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
+              className="text-black-semi text-base mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
             />
           </div>
 
           <div className="mb-4 flex items-center gap-2">
+            <label htmlFor="Estado" className="block text-lg font-medium text-primary me-2">
+              Estado
+            </label>
             <input
               type="checkbox"
               id="complete"
@@ -92,22 +95,22 @@ const TaskForm = ({ taskToEdit, onSubmit, cancelSubmit }) => {
               className={`inline-block px-3 py-1 text-sm font-semibold rounded-full ${
                 complete ? 'bg-green-100 text-green-800' : 'bg-red-100 text-red-800'
               }`}>
-              {complete ? 'Complete' : 'Not Complete'}
+              {complete ? 'Completa' : 'Pendiente'}
             </span>
           </div>
 
-          <div className="flex justify-between mt-6">
-            <Button 
-              name={taskToEdit ? 'Update Task' : 'Create Task'}
-              type="submit"
-              style="font-medium focus:outline-none focus:ring-2 focus:ring-primary"
-              classButton={'primary'}
-            />
+          <div className="flex justify-between mt-6 md:justify-end md:gap-5">
             <Button
-              name='Cancel'
+              name='Cancelar'
               type="button"
               callback={resetForm}
               style="bg-red-500 font-medium rounded-lg shadow-md focus:outline-none focus:ring-2 focus:ring-gray-300"
+              classButton={'primary'}
+            />
+            <Button 
+              name={taskToEdit ? 'Actualizar' : 'Crear'}
+              type="submit"
+              style="font-medium focus:outline-none focus:ring-2 focus:ring-primary"
               classButton={'primary'}
             />
           </div>

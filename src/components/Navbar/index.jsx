@@ -4,8 +4,8 @@ import { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 
 const navigation = [
-  { name: 'Home', href: '/' },
-  { name: 'Tasks', href: '/tasks' },
+  { name: 'Inicio', href: '/' },
+  { name: 'Tareas', href: '/tasks' },
 ];
 
 const Navbar = () => {
