@@ -8,7 +8,7 @@ const SearchBar = ({ query, onSearch }) => {
         placeholder="Buscar"
         value={query}
         onChange={(e) => onSearch(e.target.value)}
-        className="h-9 text-black-semi font-normal text-base w-auto px-2 py-1 border rounded shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-300"
+        className="bg-white h-9 text-black-semi font-normal text-base w-auto px-2 py-1 border rounded shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-300"
       />
     </div>
   );
