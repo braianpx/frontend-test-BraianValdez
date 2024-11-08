@@ -1,7 +1,6 @@
 # TechTest - Frontend
 
-Este proyecto es una plataforma de administración de tareas. Permite a los usuarios crear, editar, eliminar y marcar tareas como completadas, todo a través de una interfaz amigable. Este es el componente de cliente que interactúa con el backend para gestionar las tareas de manera eficiente.
-**Es Responsive**
+Este proyecto es una plataforma de administración de tareas responsive. Permite a los usuarios crear, editar, eliminar y marcar tareas como completadas, todo a través de una interfaz amigable. Este es el componente de cliente que interactúa con el backend para gestionar las tareas de manera eficiente.
 
 ### Tecnologías utilizadas:
 - **React**: Para construir una interfaz de usuario dinámica y reactiva.
