@@ -7,7 +7,7 @@ const CheckBox = ({checked, callback}) => {
       type="checkbox"
       checked={checked}
       onChange={callback}
-      className="h-5 w-5 cursor-pointer"
+      className="h-5 w-5 cursor-pointer bg-white"
     />
   </label>
   )

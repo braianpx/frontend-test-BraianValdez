@@ -56,7 +56,7 @@ Una vez configurado todo, puedes compilar el proyecto para producción con el si
 Para iniciar el servidor de desarrollo y comenzar a trabajar en la aplicación frontend, ejecuta:
 
   ```bash
-  npm start
+  npm run dev
   ```
 ##### Nota: Esto abrirá automáticamente tu navegador en http://localhost:3000.
 ### Guia de como utlizar la app

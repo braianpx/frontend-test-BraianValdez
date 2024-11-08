@@ -62,7 +62,7 @@ const TaskForm = ({ taskToEdit, onSubmit, cancelSubmit }) => {
               onChange={(e) => setTitle(e.target.value)}
               placeholder="Titulo de la tarea"
               required
-              className="text-black-semi text-base mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
+              className="bg-white text-black-semi text-base mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
             />
           </div>
 
@@ -76,7 +76,7 @@ const TaskForm = ({ taskToEdit, onSubmit, cancelSubmit }) => {
               onChange={(e) => setDescription(e.target.value)}
               placeholder="Descripción de la tarea."
               required
-              className="text-black-semi text-base mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
+              className="bg-white text-black-semi text-base mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
             />
           </div>
 
