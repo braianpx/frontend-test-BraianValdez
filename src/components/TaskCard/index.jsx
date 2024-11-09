@@ -32,7 +32,7 @@ const TaskCard = ({ id, title, description, complete }) => {
     <article className="bg-white shadow-md rounded-lg p-4 max-w-sm w-full flex flex-col justify-between">
       <div className="flex justify-between items-center border-b-2">
         <h2 className="text-xl font-bold text-primary">{title}</h2>
-        <CheckBox checked={complete} callback={onToggleComplete}/>
+        <CheckBox checked={complete} callback={onToggleComplete} name='complete'/>
       </div>
       <p className="mt-2 text-gray-600">{description}</p>
       <div className="mt-6 flex justify-end space-x-4">
@@ -54,7 +54,7 @@ const TaskCard = ({ id, title, description, complete }) => {
           type='button'/>
       </div>
         {
-          edit && <TaskForm taskToEdit={{id,title,description,complete}} onSubmit={updateTask} cancelSubmit={onEdit}/>
+          edit && <TaskForm idTaskEdit={id} taskToEdit={{title,description,complete}} onSubmit={updateTask} cancelSubmit={onEdit}/>
         }
     </article>
   );
