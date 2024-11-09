@@ -9,7 +9,6 @@ import CheckBox from '../Checkbox';
 
 const TaskForm = ({ idTaskEdit, taskToEdit, onSubmit, cancelSubmit }) => {
   // Estado para el formulario
-  console.log("taskEdit:", taskToEdit)
   const { toggle: isEdit } = useToggleState(taskToEdit && true || false);
   const [ task, setTask ] = useState({
     title:'',
